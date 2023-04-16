@@ -24,7 +24,7 @@ export const createChat = async (req, res) => {
       
       Despite the potential benefits of genetic engineering, there are also concerns about its safety and ethical implications. Critics argue that genetic engineering may result in unintended consequences, such as the creation of new diseases or the spread of genetic mutations. There are also concerns about the use of genetic engineering for human cloning and the potential for eugenics. As with any new technology, it is important to weigh the potential benefits against the risks and to ensure that ethical considerations are taken into account.
       
-      using the text above ${req.body.question} and can you explain it like a biology college professor`,
+      using the text givin ${req.body.question} can you explain your answer like a biology college professor and then ask me questions about the answer you gave like a college tutor.`,
         },
       ],
     });
