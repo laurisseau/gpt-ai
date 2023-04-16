@@ -10,18 +10,23 @@ import { useState } from 'react';
 export default function StudentChatScreen() {
   //const { state, dispatch: ctxDispatch } = useContext(Store);
   //const { userInfo } = state;
-
-  const [question, setQuestion] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [question, setQuestion] = useState('What is genetic engineering?');
   const [answer, setAnswer] = useState('');
 
   const submitQuestion = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const { data } = await axios.post('/', {
         question,
       });
 
       setAnswer(data.message.content);
+
+      if (data) {
+        setLoading(false);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -79,17 +84,24 @@ export default function StudentChatScreen() {
               className="m-3 w-100 border"
               style={{ height: '300px', overflowY: 'scroll' }}
             >
-              <p className='p-4'>{answer}</p>
+              <p className="p-4">{answer}</p>
             </div>
             <div className="w-100">
               <textarea
                 className="mt-4 ps-4 pt-2 pe-4"
                 style={{ height: '45px', width: '100%' }}
+                value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               ></textarea>
-              <Button type="submit" className="mt-3 w-100">
-                submit
-              </Button>
+              {!loading ? (
+                <Button type="submit" className="mt-3 w-100">
+                  submit
+                </Button>
+              ) : (
+                <Button type="submit" className="mt-3 w-100" disabled>
+                  Loading...
+                </Button>
+              )}
             </div>
           </form>
         </div>
