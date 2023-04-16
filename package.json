@@ -5,7 +5,7 @@
   "devDependencies": {},
   "scripts": {
     "build" : "cd server && npm install && cd ../client && npm install && npm run build",
-    "start": "node client/server.js"
+    "start": "node server/server.js"
   },
   "author": "laurisseau",
   "license": "ISC",
