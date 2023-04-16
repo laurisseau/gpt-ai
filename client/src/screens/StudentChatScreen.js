@@ -75,6 +75,7 @@ export default function StudentChatScreen() {
 
       <Container>
         <div className="" style={{ height: '100%' }}>
+          <h4 className='text-center mt-2'>Check out the doc and ask a question!</h4>
           <form
             className="d-flex align-items-end flex-wrap "
             style={{ height: '100%' }}
