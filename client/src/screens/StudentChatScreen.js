@@ -1,14 +1,16 @@
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import {Link} from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { useContext, useState } from 'react';
-import { Store } from '../Store';
+import { useState } from 'react';
+//import { Store } from '../Store';
 
 export default function StudentChatScreen() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const { userInfo } = state;
+  //const { state, dispatch: ctxDispatch } = useContext(Store);
+  //const { userInfo } = state;
 
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
@@ -25,7 +27,7 @@ export default function StudentChatScreen() {
       console.log(err);
     }
   };
-
+  /*
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT' });
     localStorage.removeItem('userInfo');
@@ -33,54 +35,73 @@ export default function StudentChatScreen() {
     localStorage.removeItem('employeeInfo');
     window.location.href = '/';
   };
-
+*/
   return (
-    <div className="div">
-      <Row>
-        <Col lg={3} className="border p-3" style={{ height: '100vh' }}>
-          <h4>Hey, {userInfo.firstname}</h4>
-          <ul>
-            <li>
-              <Link>TA Chat</Link>
-            </li>
+    <div>
+      <Navbar
+        bg="light"
+        className="shadow-sm"
+        style={{ height: '70px' }}
+        expand="sm"
+      >
+        <Container style={{ maxWidth: '1140px' }} fluid>
+          <Navbar.Brand href="/">TeachMe.ai</Navbar.Brand>
+          <Navbar.Toggle aria-controls="offcanvasNavbar-expand-sm" />
 
-            <li>
-              <Link to="/studentChat">ProPal Chat</Link>
-            </li>
+          <Navbar.Offcanvas
+            id="offcanvasNavbar-expand-sm"
+            aria-labelledby="offcanvasNavbarLabel-expand-sm"
+            placement="end"
+          >
+            <Offcanvas.Header closeButton>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-sm`}>
+                TeachMe.ai
+              </Offcanvas.Title>
+            </Offcanvas.Header>
 
-            <li>
-              <Link to="/docs">Doc</Link>
-            </li>
+            <Offcanvas.Body>
+              <Nav className="me-auto">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/docs">Doc</Nav.Link>
+              </Nav>
+            </Offcanvas.Body>
+          </Navbar.Offcanvas>
+        </Container>
+      </Navbar>
+
+      <Container>
+        <div className="" style={{ height: '100%' }}>
+          <form
+            className="d-flex align-items-end flex-wrap "
+            style={{ height: '100%' }}
+            onSubmit={submitQuestion}
+          >
+            <div
+              className="m-3 w-100 border"
+              style={{ height: '300px', overflowY: 'scroll' }}
+            >
+              <p className='p-4'>{answer}</p>
+            </div>
+            <div className="w-100">
+              <textarea
+                className="mt-4 ps-4 pt-2 pe-4"
+                style={{ height: '45px', width: '100%' }}
+                onChange={(e) => setQuestion(e.target.value)}
+              ></textarea>
+              <Button type="submit" className="mt-3 w-100">
+                submit
+              </Button>
+            </div>
+          </form>
+        </div>
+      </Container>
+    </div>
+  );
+}
+
+/*
 
             <li>
               <Link onClick={signoutHandler}>Logout</Link>
             </li>
-          </ul>
-        </Col>
-        <Col lg={9} className="" style={{ height: '100vh' }}>
-          <div style={{ height: '100%' }}>
-            <form
-              className="d-flex align-items-end flex-wrap "
-              style={{ height: '100%' }}
-              onSubmit={submitQuestion}
-            >
-              <div className="ms-5" style={{ width: '80%' }}>
-                <p>{answer}</p>
-              </div>
-              <div className="w-100">
-                <textarea
-                  className="ms-3"
-                  style={{ height: '45px', width: '80%' }}
-                  onChange={(e) => setQuestion(e.target.value)}
-                ></textarea>
-                <Button type="submit" className="mb-4 ms-4">
-                  submit
-                </Button>
-              </div>
-            </form>
-          </div>
-        </Col>
-      </Row>
-    </div>
-  );
-}
+            */
