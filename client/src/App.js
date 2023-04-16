@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import SigninScreen from './screens/SigninScreen';
-import SignupScreen from './screens/SignupScreen';
+//import SigninScreen from './screens/SigninScreen';
+//import SignupScreen from './screens/SignupScreen';
 import StudentChatScreen from './screens/StudentChatScreen';
 import DocsScreen from './screens/DocsScreen';
-import StudentTaChatScreen from './screens/StudentTaChatScreen';
+//import StudentTaChatScreen from './screens/StudentTaChatScreen';
 
 function App() {
   return (

@@ -32,7 +32,7 @@ mongoose
 */
 app.use('/', aiRouter);
 //app.use('/api/users', userRouter)
-/*
+
 const __dirname = path.resolve();
 
 app.use(express.static(path.join(__dirname, '/client/build')));
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'));
 });
-*/
+
 app.use((err, req, res, next) => {
   console.log(err)
 })

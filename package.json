@@ -1,1 +1,13 @@
-{}
+{
+  "name": "gpt-ta",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "build" : "cd server && npm install && cd ../client && npm install && npm run build",
+    "start": "node client/server.js"
+  },
+  "author": "laurisseau",
+  "license": "ISC",
+  "description": ""
+}

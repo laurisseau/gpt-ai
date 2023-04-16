@@ -2,7 +2,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
+//import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { io } from 'socket.io-client';
@@ -18,7 +18,7 @@ export default function StudentTaChatScreen() {
     //  });
 
   const [message, setMessage] = useState('')
-
+  console.log(message)
   const sendMessage = (e) => {
     e.preventDefault();
     //console.log(message)
